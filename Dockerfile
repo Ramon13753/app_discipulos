@@ -15,7 +15,7 @@ RUN mkdir -p /etc/nginx/conf.d
 # Copia tu archivo de configuración de Nginx personalizado
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# ... (el resto de tu Dockerfile se mantiene igual) ...
+# ... (todo lo demás en tu Dockerfile es igual) ...
 
-# REEMPLAZA las líneas de ENTRYPOINT y CMD anteriores con esta ÚNICA LÍNEA:
-CMD ["sh", "-c", "php-fpm && nginx -g 'daemon off;'"]
+# Cambia esta línea CMD para enfocarte en Nginx
+CMD ["sh", "-c", "/usr/sbin/nginx -t && /usr/sbin/nginx -g 'daemon off;'"]

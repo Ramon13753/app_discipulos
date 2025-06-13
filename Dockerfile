@@ -4,6 +4,9 @@ FROM php:8.1-fpm-alpine
 # Instala Nginx
 RUN apk add --no-cache nginx
 
+# Asegura que el usuario y grupo 'nginx' existen
+RUN addgroup -S nginx && adduser -S nginx -G nginx
+
 # Crea el directorio de configuración para Nginx si no existe
 RUN mkdir -p /etc/nginx/conf.d
 
@@ -19,12 +22,16 @@ COPY php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
 # Copia tus archivos PHP al directorio de documentos web de Nginx
 COPY . /var/www/html/
 # Asegura que los permisos de los archivos sean para el usuario 'nginx'
-RUN chown -R nginx:nginx /var/www/html/
+# También asegúrate de que el directorio raíz de Nginx tenga los permisos correctos.
+RUN chown -R nginx:nginx /var/www/html/ \
+    && chmod -R 755 /var/www/html/
 
 # Exponer el puerto 80
 EXPOSE 80
 
-# Comando para iniciar PHP-FPM y Nginx en primer plano
-# Usamos 'exec' para asegurar que Nginx sea el proceso principal (PID 1)
-# y lo ejecutamos como el usuario 'nginx' para permisos adecuados
-CMD ["sh", "-c", "php-fpm && exec nginx -g 'daemon off;'"]
+# Definir un ENTRYPOINT para el contenedor
+# Esto hace que Nginx sea el proceso principal (PID 1)
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
+
+# CMD para PHP-FPM (se ejecutará como un proceso secundario o en segundo plano si ENTRYPOINT toma el control)
+CMD ["sh", "-c", "php-fpm"]

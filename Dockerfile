@@ -18,7 +18,8 @@ COPY php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
 
 # Copia tus archivos PHP al directorio de documentos web de Nginx
 COPY . /var/www/html/
-RUN chown -R www-data:www-data /var/www/html/
+# Asegura que los permisos de los archivos sean para el usuario 'nginx'
+RUN chown -R nginx:nginx /var/www/html/
 
 # Exponer el puerto 80
 EXPOSE 80

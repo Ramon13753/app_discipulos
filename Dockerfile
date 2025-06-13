@@ -4,8 +4,10 @@ FROM php:8.1-fpm-alpine
 # Instala Nginx
 RUN apk add --no-cache nginx
 
-# Configuración para Nginx
-# Aquí creamos un archivo de configuración de Nginx directamente
+# CREA EL DIRECTORIO DE CONFIGURACIÓN DE NGINX ANTES DE USARLO
+RUN mkdir -p /etc/nginx/conf.d
+
+# Configuración para Nginx (ahora la carpeta conf.d existe)
 RUN echo 'server { listen 80; root /var/www/html; index index.php index.html; location / { try_files $uri $uri/ =404; } location ~ \.php$ { fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; include fastcgi_params; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; } }' > /etc/nginx/conf.d/default.conf
 
 # Configuración para PHP-FPM (para que escuche en el puerto 9000)

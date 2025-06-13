@@ -13,6 +13,7 @@ RUN mkdir -p /var/log/nginx \
 RUN mkdir -p /etc/nginx/conf.d
 
 # Esto es lo que necesitas cambiar:
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
+#COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Cambia esta línea CMD para enfocarte en Nginx
 CMD ["sh", "-c", "/usr/sbin/nginx -t && /usr/sbin/nginx -g 'daemon off;'"]

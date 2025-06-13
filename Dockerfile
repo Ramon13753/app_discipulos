@@ -25,4 +25,6 @@ RUN chown -R nginx:nginx /var/www/html/
 EXPOSE 80
 
 # Comando para iniciar PHP-FPM y Nginx en primer plano
-CMD ["sh", "-c", "php-fpm && nginx -g 'daemon off;'"]
+# Usamos 'exec' para asegurar que Nginx sea el proceso principal (PID 1)
+# y lo ejecutamos como el usuario 'nginx' para permisos adecuados
+CMD ["sh", "-c", "php-fpm && exec nginx -g 'daemon off;'"]

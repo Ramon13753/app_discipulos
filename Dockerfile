@@ -12,9 +12,7 @@ RUN mkdir -p /var/log/nginx \
 # Crea el directorio de configuración para Nginx si no existe
 RUN mkdir -p /etc/nginx/conf.d
 
-# Copia tu archivo de configuración de Nginx personalizado
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 # ... (todo lo demás en tu Dockerfile es igual) ...
 
 # Cambia esta línea CMD para enfocarte en Nginx

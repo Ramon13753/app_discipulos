@@ -4,7 +4,7 @@ FROM php:8.1-fpm-alpine
 # Instala Nginx
 RUN apk add --no-cache nginx
 
-# Elimina la línea siguiente que intentaba crear el usuario/grupo nginx:
+# ELIMINA la línea siguiente (que yo te pedí que agregaras, ¡disculpa!):
 # RUN addgroup -S nginx && adduser -S nginx -G nginx
 
 # Crea el directorio de configuración para Nginx si no existe
@@ -29,9 +29,5 @@ RUN chown -R nginx:nginx /var/www/html/ \
 # Exponer el puerto 80
 EXPOSE 80
 
-# Definir un ENTRYPOINT para el contenedor
-# Esto hace que Nginx sea el proceso principal (PID 1)
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
-
-# CMD para PHP-FPM (se ejecutará como un proceso secundario o en segundo plano si ENTRYPOINT toma el control)
-CMD ["sh", "-c", "php-fpm"]
+# REEMPLAZA las líneas de ENTRYPOINT y CMD anteriores con esta ÚNICA LÍNEA:
+CMD ["sh", "-c", "php-fpm && nginx -g 'daemon off;'"]

@@ -4,8 +4,8 @@ FROM php:8.1-fpm-alpine
 # Instala Nginx
 RUN apk add --no-cache nginx
 
-# Asegura que el usuario y grupo 'nginx' existen
-RUN addgroup -S nginx && adduser -S nginx -G nginx
+# Elimina la línea siguiente que intentaba crear el usuario/grupo nginx:
+# RUN addgroup -S nginx && adduser -S nginx -G nginx
 
 # Crea el directorio de configuración para Nginx si no existe
 RUN mkdir -p /etc/nginx/conf.d

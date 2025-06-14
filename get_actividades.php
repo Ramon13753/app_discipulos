@@ -18,7 +18,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 $servername = "mysql-5v2t-production.up.railway.app";
 $username = "root"; // Usuario de tu base de datos
 $password = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu"; // Contraseña de tu base de datos
-$dbname = "railway"; // Nombre de tu base de datos
+$dbname = "discipulos_de_cristo"; // Nombre de tu base de datos
 $port = 33060; // Puerto de tu base de datos
 
 $conn = new mysqli($servername, $username, $password, $dbname, $port);

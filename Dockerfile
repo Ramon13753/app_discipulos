@@ -1,5 +1,6 @@
 # Usa una imagen oficial de PHP-FPM con Alpine (ligera y estable)
-FROM php:8.1-fpm-alpine
+#FROM php:8.1-fpm-alpine
+FROM php:8.1-fpm-bullseye
 
 # Instala Nginx
 RUN apk add --no-cache nginx

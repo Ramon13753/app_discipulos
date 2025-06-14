@@ -1,9 +1,13 @@
-# Usa una imagen oficial de PHP-FPM con Alpine (ligera y estable)
-#FROM php:8.1-fpm-alpine
+# Usa una imagen oficial de PHP-FPM con Bullseye
 FROM php:8.1-fpm-bullseye
 
+# Instala las extensiones PHP necesarias para MySQL
+# 'pdo' y 'pdo_mysql' también son buenas prácticas para bases de datos
+RUN docker-php-ext-install pdo pdo_mysql mysqli && \
+    docker-php-ext-enable pdo pdo_mysql mysqli
+
 # Instala Nginx
-RUN apk add --no-cache nginx
+RUN apt-get update && apt-get install -y nginx --no-install-recommends
 
 # Crea los directorios de logs de Nginx y asigna permisos
 RUN mkdir -p /var/log/nginx \
@@ -13,7 +17,6 @@ RUN mkdir -p /var/log/nginx \
 # Copia tu nginx.conf personalizado para que reemplace el original
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# --- NUEVAS LÍNEAS IMPORTANTES ---
 # Copia tu aplicación PHP a la ubicación donde Nginx la busca
 COPY . /var/www/html
 

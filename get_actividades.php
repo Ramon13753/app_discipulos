@@ -19,7 +19,7 @@ $servername = "mysql-5v2t-production.up.railway.app";
 $username = "root"; // Usuario de tu base de datos
 $password = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu"; // Contraseña de tu base de datos
 $dbname = "railway"; // Nombre de tu base de datos
-$port = 40395; // Puerto de tu base de datos
+$port = 3306; // Puerto de tu base de datos
 
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 

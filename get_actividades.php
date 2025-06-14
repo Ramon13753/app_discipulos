@@ -15,7 +15,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 });
 
 // *** ASEGÚRATE DE USAR LAS MISMAS CREDENCIALES DE BD QUE TE FUNCIONARON ***
-$servername = "shuttle.proxy.rlwy.net";
+$servername = "mysql-5v2t-production.up.railway.app";
 $username = "root"; // Usuario de tu base de datos
 $password = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu"; // Contraseña de tu base de datos
 $dbname = "railway"; // Nombre de tu base de datos

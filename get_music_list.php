@@ -25,7 +25,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 $servername = "shuttle.proxy.rlwy.net";
 $username = "root"; // Tu usuario de base de datos en Railway
 $password = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu"; // Tu contraseña de base de datos en Railway
-$dbname = "discipulos_de_cristo"; // El nombre de tu base de datos en Railway
+$dbname = "discipulos_app"; // El nombre de tu base de datos en Railway
 $port = 40395; // El puerto público que Railway te proporciona
 
 // Intentar establecer la conexión a la base de datos

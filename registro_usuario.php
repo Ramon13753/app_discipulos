@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $servername = "shuttle.proxy.rlwy.net";
 $username_db = "root"; // Renombrado para evitar conflicto con variables POST/JSON
 $password_db = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu";
-$dbname = "discipulos_de_cristo"; // ¡CAMBIADO! Nombre correcto de la base de datos
+$dbname = "discipulos_app"; // ¡CAMBIADO! Nombre correcto de la base de datos
 $port = 40395; // El puerto público que Railway te proporciona
 
 // Conectar a la base de datos

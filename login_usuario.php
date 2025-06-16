@@ -6,6 +6,12 @@ header("Access-Control-Allow-Methods: POST"); // Permitir solo peticiones POST
 header("Access-Control-Max-Age: 3600"); // Cachear la pre-respuesta por 1 hora
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
+// --- TEMPORAL PARA DEPURACIÓN: Mostrar todos los errores PHP ---
+// Quita estas dos líneas una vez que el problema esté resuelto
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+// -------------------------------------------------------------
+
 // Manejador de excepciones para capturar cualquier error PHP no manejado
 set_exception_handler(function($e) {
     http_response_code(500);
@@ -35,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $servername = "shuttle.proxy.rlwy.net";
 $username_db = "root"; // Variable renombrada para evitar conflicto
 $password_db = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu";
-$dbname = "discipulos_app"; // El nombre de tu base de datos en Railway
+$dbname = "discipulos_app"; // Tu nombre de base de datos confirmado
 $port = 40395; // El puerto público que Railway te proporciona
 
 // Conectar a la base de datos
@@ -104,4 +110,4 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 $conn->close();
-?>
+// OMITIR la etiqueta de cierre PHP `?>

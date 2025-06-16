@@ -20,7 +20,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
     exit;
 });
 
-// *** Credenciales de la Base de Datos Railway (¡Asegúrate de que sean las correctas!) ***
+// *** Credenciales de la Base de Datos Railway ***
 $servername = "shuttle.proxy.rlwy.net";
 $username = "root";
 $password = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu";
@@ -34,9 +34,16 @@ if ($conn->connect_error) {
     exit;
 }
 
-// Consulta para obtener los dos últimos anuncios, ordenados por fecha de creación descendente
-// Hemos añadido 'LIMIT 2' aquí para obtener solo los dos más recientes
-$sql = "SELECT id, title, description, content_url FROM announcements ORDER BY created_at DESC LIMIT 2";
+// Obtener el límite de anuncios de la URL, si se proporciona
+$limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 20; // Por defecto, si no se especifica, se obtienen 20
+
+// Asegurarse de que el límite sea un número positivo y razonable
+if ($limit <= 0 || $limit > 100) { // Puedes ajustar el máximo según tus necesidades
+    $limit = 20; // Si el límite es inválido, vuelve al valor por defecto
+}
+
+// Construir la consulta SQL con el límite
+$sql = "SELECT id, title, description, content_url FROM announcements ORDER BY created_at DESC LIMIT $limit";
 $result = $conn->query($sql);
 
 $announcements = [];

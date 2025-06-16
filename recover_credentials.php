@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $servername = "shuttle.proxy.rlwy.net";
 $username_db = "root"; // Variable renombrada para evitar conflicto con $username del POST
 $password_db = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu";
-$dbname = "discipulos_app"; // ¡CAMBIADO! Nombre correcto de la base de datos
+$dbname = "discipulos_de_crito"; // ¡CAMBIADO! Nombre correcto de la base de datos
 $port = 40395;
 
 // Conectar a la base de datos

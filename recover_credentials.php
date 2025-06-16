@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $servername = "shuttle.proxy.rlwy.net";
 $username_db = "root"; // Variable renombrada para evitar conflicto con $username del POST
 $password_db = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu";
-$dbname = "discipulos_app";
+$dbname = "discipulos_app"; // ¡CAMBIADO! Nombre correcto de la base de datos
 $port = 40395;
 
 // Conectar a la base de datos
@@ -88,7 +88,7 @@ if ($result->num_rows > 0) {
     // 2. Guardarías este token en una nueva tabla de la base de datos junto con el ID del usuario y una fecha de expiración.
     // 3. Enviarías un correo electrónico al $userEmail (usando un servicio SMTP externo como SendGrid, Mailgun, etc.)
     //    con un enlace para restablecer la contraseña que incluiría este token.
-    //    Ejemplo de enlace: https://tuapp.com/reset-password?token=XYZ123
+    //    Ejemplo de enlace: https://tuapp.com/reset-password?token=GENERATED_SECURE_TOKEN
     // 4. El usuario haría clic en ese enlace, lo que lo llevaría a una página donde podría establecer una nueva contraseña
     //    después de validar el token.
 

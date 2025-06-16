@@ -18,7 +18,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 $servername = "shuttle.proxy.rlwy.net";
 $username = "root"; // Usuario de tu base de datos
 $password = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu"; // Contraseña de tu base de datos
-$dbname = "discipulos_de_cristo"; // Nombre de tu base de datos
+$dbname = "discipulos_app"; // Nombre de tu base de datos
 $port = 40395; // Puerto de tu base de datos
 
 $conn = new mysqli($servername, $username, $password, $dbname, $port);

@@ -24,7 +24,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 $servername = "shuttle.proxy.rlwy.net";
 $username = "root";
 $password = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu";
-$dbname = "discipulos_de_cristo"; // Asegúrate que este sea el nombre correcto
+$dbname = "discipulos_app"; // Asegúrate que este sea el nombre correcto
 $port = 40395;
 
 $conn = new mysqli($servername, $username, $password, $dbname, $port);

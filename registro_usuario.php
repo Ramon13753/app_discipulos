@@ -37,7 +37,7 @@ if (
         exit;
     }
 
-    $conn = new mysqli("shuttle.proxy.rlwy.net", "root", "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu", "railway", 40395);
+    $conn = new mysqli("shuttle.proxy.rlwy.net", "root", "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu", "discipulos_app", 40395);
 
     if ($conn->connect_error) {
         echo json_encode(["success" => false, "message" => "Conexión fallida: " . $conn->connect_error]);

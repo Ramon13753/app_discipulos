@@ -7,7 +7,7 @@ header("Access-Control-Max-Age: 3600"); // Cachear la pre-respuesta por 1 hora
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // --- TEMPORAL PARA DEPURACIÓN: Mostrar todos los errores PHP ---
-// Quita estas dos líneas una vez que el problema esté resuelto
+// ¡MANTEN ESTAS LÍNEAS ACTIVAS DURANTE ESTA PRUEBA!
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // -------------------------------------------------------------
@@ -37,14 +37,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// *** Credenciales de la Base de Datos Railway (¡Asegúrate de que sean las correctas!) ***
-$servername = "shuttle.proxy.rlwy.net";
-$username_db = "root"; // Variable renombrada para evitar conflicto
-$password_db = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu";
-$dbname = "discipulos_app"; // Tu nombre de base de datos confirmado
-$port = 40395; // El puerto público que Railway te proporciona
+// *** Credenciales de la Base de Datos Railway (¡AHORA CON FALLBACKS DIRECTOS!) ***
+// Si getenv() no funciona, usará los valores hardcodeados para la conexión.
+// ESTO ES TEMPORAL PARA DEBUGGING DE LAS VARIABLES DE ENTORNO.
+// LUEGO DEBES CAMBIAR LOS VALORES DE FALLBACK A Cadenas Vacías ('') o 0.
+$servername = getenv('DB_SERVER') ?: 'shuttle.proxy.rlwy.net';
+$username_db = getenv('DB_USERNAME') ?: 'root';
+$password_db = getenv('DB_PASSWORD') ?: 'NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu';
+$dbname = getenv('DB_NAME') ?: 'discipulos_app';
+$port = getenv('DB_PORT') ?: 40395;
+
+// Convertir el puerto a entero, ya que getenv() devuelve un string
+$port = (int)$port;
 
 // Conectar a la base de datos
+// Asegúrate de usar $username_db y $password_db aquí
 $conn = new mysqli($servername, $username_db, $password_db, $dbname, $port);
 
 // Verificar si la conexión falló
@@ -110,4 +117,4 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 $conn->close();
-// OMITIR la etiqueta de cierre PHP `?>
+// OMITIR la etiqueta de cierre PHP `?>` para evitar problemas de espacios

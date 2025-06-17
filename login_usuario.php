@@ -8,6 +8,8 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // --- TEMPORAL PARA DEPURACIÓN: Mostrar todos los errores PHP ---
 // ¡MANTEN ESTAS LÍNEAS ACTIVAS DURANTE ESTA PRUEBA!
+// Esto ayuda a que los errores de PHP se impriman directamente, lo que puede corromper el JSON,
+// pero a veces revela la causa subyacente.
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // -------------------------------------------------------------

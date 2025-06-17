@@ -31,7 +31,7 @@ $port = getenv('DB_PORT') ?: 3306; // El puerto se lee como string, luego se usa
 $port = (int)$port;
 
 // Intentar establecer la conexión a la base de datos
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
+$conn = new mysqli($servername, $username_db, $password_db, $dbname, $port);
 
 // Verificar si la conexión falló
 if ($conn->connect_error) {

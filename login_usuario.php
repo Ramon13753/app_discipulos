@@ -37,21 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// *** Credenciales de la Base de Datos Railway (¡Ahora desde Variables de Entorno!) ***
-// Se eliminaron las líneas de credenciales directas duplicadas.
-$servername = getenv('DB_SERVER') ?: ''; // Valor por defecto para desarrollo local si no está seteada
-$username_db = getenv('DB_USERNAME') ?: '';
-$password_db = getenv('DB_PASSWORD') ?: '';
-$dbname = getenv('DB_NAME') ?: ''; // Asegúrate que sea 'discipulos_app' o el nombre correcto
-$port = getenv('DB_PORT') ?: 0; // El puerto se lee como string, luego se usará como int
-
-// Convertir el puerto a entero, ya que getenv() devuelve un string
-$port = (int)$port;
+// *** Credenciales de la Base de Datos Railway (¡Asegúrate de que sean las correctas!) ***
+$servername = "shuttle.proxy.rlwy.net";
+$username_db = "root"; // Variable renombrada para evitar conflicto
+$password_db = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu";
+$dbname = "discipulos_app"; // Tu nombre de base de datos confirmado
+$port = 40395; // El puerto público que Railway te proporciona
 
 // Conectar a la base de datos
-// Asegúrate de que estás usando $username_db aquí y no $username
 $conn = new mysqli($servername, $username_db, $password_db, $dbname, $port);
 
+// Verificar si la conexión falló
 if ($conn->connect_error) {
     http_response_code(500); // Internal Server Error
     echo json_encode(["success" => false, "message" => "Error de conexión a la base de datos", "error" => $conn->connect_error]);
@@ -114,4 +110,4 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 $conn->close();
-// OMITIR la etiqueta de cierre PHP `?>` para evitar problemas de espacios
+// OMITIR la etiqueta de cierre PHP `?>

@@ -37,12 +37,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// *** Credenciales de la Base de Datos Railway (¡Asegúrate de que sean las correctas!) ***
-$servername = "shuttle.proxy.rlwy.net";
-$username_db = "root"; // Variable renombrada para evitar conflicto
-$password_db = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu";
-$dbname = "discipulos_app"; // Tu nombre de base de datos confirmado
-$port = 40395; // El puerto público que Railway te proporciona
+// *** Credenciales de la Base de Datos Railway (¡Ahora desde Variables de Entorno!) ***
+$servername = getenv('DB_SERVER') ?: 'localhost'; // Valor por defecto para desarrollo local si no está seteada
+$username_db = getenv('DB_USERNAME') ?: 'root';
+$password_db = getenv('DB_PASSWORD') ?: '';
+$dbname = getenv('DB_NAME') ?: 'default_db';
+$port = getenv('DB_PORT') ?: 3306; // El puerto se lee como string, luego se usará como int
+
+// Convertir el puerto a entero, ya que getenv() devuelve un string
+$port = (int)$port;
 
 // Conectar a la base de datos
 $conn = new mysqli($servername, $username_db, $password_db, $dbname, $port);

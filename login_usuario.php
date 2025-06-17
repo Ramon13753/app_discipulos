@@ -43,11 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Si getenv() no funciona, usará los valores hardcodeados para la conexión.
 // ESTO ES TEMPORAL PARA DEBUGGING DE LAS VARIABLES DE ENTORNO.
 // LUEGO DEBES CAMBIAR LOS VALORES DE FALLBACK A Cadenas Vacías ('') o 0.
-$servername = getenv('DB_SERVER') ?: 'shuttle.proxy.rlwy.net';
-$username_db = getenv('DB_USERNAME') ?: 'root';
-$password_db = getenv('DB_PASSWORD') ?: 'NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu';
-$dbname = getenv('DB_NAME') ?: 'discipulos_app';
-$port = getenv('DB_PORT') ?: 40395;
+$servername = getenv('DB_SERVER') ?: '';
+$username_db = getenv('DB_USERNAME') ?: '';
+$password_db = getenv('DB_PASSWORD') ?: '';
+$dbname = getenv('DB_NAME') ?: '';
+$port = getenv('DB_PORT') ?: 0;
 
 // Convertir el puerto a entero, ya que getenv() devuelve un string
 $port = (int)$port;

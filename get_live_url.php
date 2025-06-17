@@ -14,12 +14,15 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
     exit;
 });
 
-// *** ASEGÚRATE DE USAR LAS MISMAS CREDENCIALES DE BD QUE TE FUNCIONARON ***
-$servername = "shuttle.proxy.rlwy.net";
-$username = "root"; // Usuario de tu base de datos
-$password = "NXcdHmwfHhmucKqdmxPCYMLrRFDMiyNu"; // Contraseña de tu base de datos
-$dbname = "discipulos_app"; // Nombre de tu base de datos
-$port = 40395; // Puerto de tu base de datos
+// *** Credenciales de la Base de Datos Railway (¡Ahora desde Variables de Entorno!) ***
+$servername = getenv('DB_SERVER') ?: 'localhost'; // Valor por defecto para desarrollo local si no está seteada
+$username_db = getenv('DB_USERNAME') ?: 'root';
+$password_db = getenv('DB_PASSWORD') ?: '';
+$dbname = getenv('DB_NAME') ?: 'default_db';
+$port = getenv('DB_PORT') ?: 3306; // El puerto se lee como string, luego se usará como int
+
+// Convertir el puerto a entero, ya que getenv() devuelve un string
+$port = (int)$port;
 
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
 

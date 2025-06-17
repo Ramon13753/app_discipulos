@@ -119,4 +119,4 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 $conn->close();
-// OMITIR la etiqueta de cierre PHP `?>` para evitar problemas de espacios
+?>

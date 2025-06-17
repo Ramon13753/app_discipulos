@@ -43,7 +43,7 @@ $servername = getenv('DB_SERVER') ?: ''; // Valor por defecto para desarrollo lo
 $username_db = getenv('DB_USERNAME') ?: '';
 $password_db = getenv('DB_PASSWORD') ?: '';
 $dbname = getenv('DB_NAME') ?: ''; // Asegúrate que sea 'discipulos_app' o el nombre correcto
-$port = getenv('DB_PORT') ?: ; // El puerto se lee como string, luego se usará como int
+$port = getenv('DB_PORT') ?: 0; // El puerto se lee como string, luego se usará como int
 
 // Convertir el puerto a entero, ya que getenv() devuelve un string
 $port = (int)$port;

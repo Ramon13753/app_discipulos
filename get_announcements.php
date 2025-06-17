@@ -21,11 +21,11 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 });
 
 // *** Credenciales de la Base de Datos Railway (¡Ahora desde Variables de Entorno!) ***
-$servername = getenv('DB_SERVER') ?: 'localhost'; // Valor por defecto para desarrollo local si no está seteada
-$username_db = getenv('DB_USERNAME') ?: 'root';
+$servername = getenv('DB_SERVER') ?: ''; // Valor por defecto para desarrollo local si no está seteada
+$username_db = getenv('DB_USERNAME') ?: '';
 $password_db = getenv('DB_PASSWORD') ?: '';
-$dbname = getenv('DB_NAME') ?: 'default_db';
-$port = getenv('DB_PORT') ?: 3306; // El puerto se lee como string, luego se usará como int
+$dbname = getenv('DB_NAME') ?: '';
+$port = getenv('DB_PORT') ?: 0; // El puerto se lee como string, luego se usará como int
 
 // Convertir el puerto a entero, ya que getenv() devuelve un string
 $port = (int)$port;

@@ -38,19 +38,20 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // *** Credenciales de la Base de Datos Railway (¡Ahora desde Variables de Entorno!) ***
+// Se eliminaron las líneas de credenciales directas duplicadas.
 $servername = getenv('DB_SERVER') ?: 'localhost'; // Valor por defecto para desarrollo local si no está seteada
 $username_db = getenv('DB_USERNAME') ?: 'root';
 $password_db = getenv('DB_PASSWORD') ?: '';
-$dbname = getenv('DB_NAME') ?: 'default_db';
+$dbname = getenv('DB_NAME') ?: 'default_db'; // Asegúrate que sea 'discipulos_app' o el nombre correcto
 $port = getenv('DB_PORT') ?: 3306; // El puerto se lee como string, luego se usará como int
 
 // Convertir el puerto a entero, ya que getenv() devuelve un string
 $port = (int)$port;
 
 // Conectar a la base de datos
+// Asegúrate de que estás usando $username_db aquí y no $username
 $conn = new mysqli($servername, $username_db, $password_db, $dbname, $port);
 
-// Verificar si la conexión falló
 if ($conn->connect_error) {
     http_response_code(500); // Internal Server Error
     echo json_encode(["success" => false, "message" => "Error de conexión a la base de datos", "error" => $conn->connect_error]);
@@ -113,4 +114,4 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 $conn->close();
-// OMITIR la etiqueta de cierre PHP `?>
+// OMITIR la etiqueta de cierre PHP `?>` para evitar problemas de espacios

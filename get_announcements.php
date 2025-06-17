@@ -30,7 +30,7 @@ $port = getenv('DB_PORT') ?: 3306; // El puerto se lee como string, luego se usa
 // Convertir el puerto a entero, ya que getenv() devuelve un string
 $port = (int)$port;
 
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
+$conn = new mysqli($servername, $username_db, $password_db, $dbname, $port);
 
 if ($conn->connect_error) {
     echo json_encode(["success" => false, "message" => "Error de conexión a la base de datos", "error" => $conn->connect_error]);

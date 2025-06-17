@@ -39,11 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // *** Credenciales de la Base de Datos Railway (¡Ahora desde Variables de Entorno!) ***
 // Se eliminaron las líneas de credenciales directas duplicadas.
-$servername = getenv('DB_SERVER') ?: 'localhost'; // Valor por defecto para desarrollo local si no está seteada
-$username_db = getenv('DB_USERNAME') ?: 'root';
+$servername = getenv('DB_SERVER') ?: ''; // Valor por defecto para desarrollo local si no está seteada
+$username_db = getenv('DB_USERNAME') ?: '';
 $password_db = getenv('DB_PASSWORD') ?: '';
-$dbname = getenv('DB_NAME') ?: 'default_db'; // Asegúrate que sea 'discipulos_app' o el nombre correcto
-$port = getenv('DB_PORT') ?: 3306; // El puerto se lee como string, luego se usará como int
+$dbname = getenv('DB_NAME') ?: ''; // Asegúrate que sea 'discipulos_app' o el nombre correcto
+$port = getenv('DB_PORT') ?: ; // El puerto se lee como string, luego se usará como int
 
 // Convertir el puerto a entero, ya que getenv() devuelve un string
 $port = (int)$port;
